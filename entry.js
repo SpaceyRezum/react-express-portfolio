@@ -1,11 +1,18 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
+import App from './react-components/app-layout/app';
 
-// TODO: Include your React components like this:
-//import App from './components/app';
+// loads static files with file-loader when app lauches
+var staticHTMLFile = require('file-loader?name=[name].[ext]!./index.html');
 
-// TODO: Render your routes inside the router
-ReactDOM.render(<Router history={browserHistory}>
-</Router>, document.getElementById("placeholder"));
+ReactDOM.render(<App/>, document.getElementById('base-container'));
+
+// ReactDOM.render(<Router history={browserHistory}>
+//   <Route path='/' component={ App }>
+//     <IndexRoute component={ PostList } />
+//     <Route path='post' component={ EditPost } />
+//     <Route path='edit/:id' component={ EditPost } />
+//   </Route>
+// </Router>, document.getElementById("placeholder"));

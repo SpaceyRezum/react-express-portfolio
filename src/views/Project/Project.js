@@ -3,6 +3,7 @@ import CSSModules from 'react-css-modules';
 import axios from 'axios';
 import styles from './Project.css';
 import Layout from '../Layout/Layout';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 
 class Project extends Component {
     constructor(props) {
@@ -22,7 +23,7 @@ class Project extends Component {
     }
      
     render() {
-        const leftContainerContent = (<div>isLoading</div>);
+        const leftContainerContent = (<LoadingSpinner/>);
         const rightContainerContent = (<div>&nbsp;</div>);
         return <Layout leftContainerContent={leftContainerContent} rightContainerContent={rightContainerContent} />
     }

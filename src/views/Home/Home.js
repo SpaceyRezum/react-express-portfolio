@@ -4,8 +4,10 @@ import axios from 'axios';
 import styles from './Home.css';
 import RootWrapper from '../../shared/hoc/rootWrapper';
 import Layout from '../Layout/Layout';
-import mainPhoto from '../../shared/alexis-bellet.png';
+import mainPhoto from '../../shared/images/alexis-bellet.png';
 import AnimatedScrollList from '../../components/AnimatedScrollList/AnimatedScrollList';
+import SocialMediaIconList from '../../components/SocialMediaIconList/SocialMediaIconList';
+import SocialMediaIconHelper from '../../components/SocialMediaIconList/SocialMediaIconHelper';
 
 class Home extends Component {
   constructor(props) {
@@ -19,7 +21,7 @@ class Home extends Component {
   componentDidMount() {
     axios.get('/api/projects').then((response) => {
       if (response.data && Array.isArray(response.data))
-        this.setState({ projects: response.data, isLoading: true});
+        this.setState({ projects: response.data, isLoading: false});
     }).catch((err) => {
       alert(err);
     });
@@ -35,7 +37,7 @@ class Home extends Component {
         <div className={styles.Title}>Hi, my name is Alexis Bellet!<br />I am a Web Developer, based in Toronto, Canada</div>
         <div className={styles.Subtitle}>Check out my projects and get in touch!</div>
         <div className={styles.LinkContainer}>
-          {/* <SocialMediaIconList /> */}
+          <SocialMediaIconList icons={[SocialMediaIconHelper.twitter, SocialMediaIconHelper.linkedin, SocialMediaIconHelper.github]}/>
         </div>
       </RootWrapper>
     );

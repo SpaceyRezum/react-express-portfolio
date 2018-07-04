@@ -4,8 +4,8 @@ import styles from './SocialMediaIconList.css';
 
 const SocialMediaIconList = (props) => (
     <div className={styles.listContainer}> 
-        {props.icons.map((iconObject) => {
-            return <a className={styles.icon} href={iconObject.url} title={iconObject.title}>{iconObject.unicode}</a>
+        {props.icons.map((iconObject, index) => {
+            return <a key={index} className={styles.icon} href={iconObject.url} title={iconObject.title}>{iconObject.unicode}</a>
         })}
     </div>
 )

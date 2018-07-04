@@ -1,7 +1,9 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # static_files
-*.css
+/src/components/*/*.css
+/src/views/*/*.css
+/src/*.css
 
 # dependencies
 /node_modules

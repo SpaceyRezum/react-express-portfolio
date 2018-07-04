@@ -2,12 +2,17 @@
     width: 40px;
     height: 40px;
     margin: 100px auto;
+    &.revertColor {
+        .cube {
+            background-color: #252A39 !important;
+        }
+    }
 }
 
 .cube {
-    width: 33%;
-    height: 33%;
-    background-color:#73FDEA;
+    width: 30%;
+    height: 30%;
+    background-color: #73FDEA;
     float: left;
     -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
     animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;

@@ -16,6 +16,9 @@ const AnimatedScrollList = (props) => {
                         </li>
                     )
                 })}
+                <li>
+                    <Link to="/About">Contact - About Me</Link>
+                </li>
             </ul>
         );
     return content;

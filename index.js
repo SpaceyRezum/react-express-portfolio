@@ -13,6 +13,7 @@ app.use(express.static('build'));
 
 // Serve API routes.
 app.use('/api/projects', require('./api/projects'));
+app.use('/api/contact', require('./api/contact'));
 
 // If none of the above matches, serve public/index.html.
 app.get('*', (req, res) => res.sendFile(__dirname + '/build/index.html'))

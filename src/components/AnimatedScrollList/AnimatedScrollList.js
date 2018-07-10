@@ -8,7 +8,7 @@ const AnimatedScrollList = (props) => {
     const content = props.isLoading ? (
         <LoadingSpinner />
     ) : (
-            <ul className={styles.animatedListContainer}>
+            <ul className={styles.AnimatedListContainer}>
                 {props.projects.map((project) => {
                     return (
                         <li key={project.id}>

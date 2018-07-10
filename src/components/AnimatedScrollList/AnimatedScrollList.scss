@@ -1,3 +1,32 @@
-.animatedListContainer {
-    
+@import '../../shared/_media-queries.scss';
+$list-item-height: 2.8rem;
+
+.AnimatedListContainer {
+    height: 14rem;
+    overflow: scroll;
+    padding: 0;
+    list-style: none;
+    font-size: 150%;
+    width: 100%;
+    margin: 0;
+    li {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a {
+            &,
+            &:hover,
+            &:active {
+                width: 100%;
+                height: $list-item-height;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: 300;
+                color: #ffffff;
+                text-decoration: none;
+            }
+        }
+    }
 }

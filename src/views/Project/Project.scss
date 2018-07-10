@@ -1,10 +1,95 @@
-.title {}
+@import '../../shared/_media-queries.scss';
+@mixin base-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-.subtitle {}
+.TitleContainer {
+    @include base-container;
+    height: 15vh;
+    justify-content: flex-end;
+    .Title {
+        font-size: 2.5rem;
+        color: #ffffff;
+        margin: 0;
+        line-height: 1;
+        width: 100%;
+    }
+}
 
-.projectLinkContainer {}
+.SubtitleContainer {
+    @include base-container;
+    height: 5vh;
+    justify-content: flex-start;
+    .Subtitle {
+        margin: 0;
+        padding: .5rem 0 0 0;
+        width: 100%;
+        color: #ffffff;
+        font-size: 1.2rem;
+        font-weight: 300;
+        opacity: .5;
+    }
+}
 
-.techStackContainer {
-    .techStackTitle {}
-    .techStackIcons {}
+.ProjectLinkContainer {
+    @include base-container;
+    height: 45vh;
+    a {
+        padding: .5rem;
+        width: 100%;
+        text-decoration: none;
+        font-size: 1.2rem;
+        color: #ffffff;
+        font-weight: 300;
+        transition: opacity ease-in-out .3s;
+        &:hover {
+            opacity: .5;
+        }
+    }
+}
+
+.TechStackContainer {
+    @include base-container;
+    height: 20vh;
+    .TechStackTitle {
+        margin: 1rem;
+        color: white;
+        font-weight: 400;
+        text-decoration: underline;
+        font-size: 1.2rem;
+    }
+}
+
+.ImageContainer {
+    @include base-container;
+    padding-bottom: 1rem;
+    height: 50vh;
+    justify-content: flex-end;
+    img {
+        width: 80%;
+    }
+}
+
+.DescriptionContainer {
+    @include base-container;
+    height: 50vh;
+    padding-top: 1rem;
+    justify-content: flex-start;
+    h3 {
+        width: 80%;
+        text-align: left;
+        font-size: 1.8rem;
+        color: #252A39;
+        text-decoration: underline;
+    }
+    p {
+        font-size: 1.2rem;
+        width: 80%;
+        text-align: justify;
+        padding-top: 1rem;
+    }
 }

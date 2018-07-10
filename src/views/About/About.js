@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import styles from './About.css';
 import mainPhoto from '../../shared/images/alexis-bellet.png';
@@ -6,8 +7,9 @@ import Layout from '../Layout/Layout';
 import SingleElementWrapper from '../../shared/hoc/SingleElementWrapper';
 import SocialMediaIconList from '../../components/SocialMediaIconList/SocialMediaIconList';
 import SocialMediaIconHelper from '../../components/SocialMediaIconList/SocialMediaIconHelper';
-import axios from 'axios';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
+import axios from 'axios';
+import NavLinks from '../../components/NavLinks/NavLinks';
 
 class About extends Component {
     constructor(props) {
@@ -50,8 +52,9 @@ class About extends Component {
         this.setState(updatedState);
     }
 
-    resetValues() {
-        this.setState({
+    resetValues(hardReset) {
+        var updatedState = {
+            errorMessage: "",
             form: {
                 name: {
                     value: "",
@@ -74,7 +77,12 @@ class About extends Component {
                     valid: false
                 },
             }
-        });
+        };
+        if (hardReset) {
+            updatedState.emailSending = false;
+            updatedState.emailSent = false;
+        }
+        this.setState(updatedState);
     }
 
     sendEmail(event) {
@@ -111,37 +119,54 @@ class About extends Component {
     }
 
     render() {
-        const leftContainerContent = (
+        const leftContainerContent = (!this.state.emailSending && !this.state.emailSent ? (
             <SingleElementWrapper>
-                <h2>Contact - About Me</h2>
-                <form onSubmit={(event) => this.sendEmail(event)}>
-                    <div className={styles.inputGroup}>
-                        <label htmlFor="name">Name</label>
-                        <input type="text" name="name" id="name" value={this.state.form.name.value} onChange={(event) => this.inputChange(event.target.attributes.name.value, event.target.value)} />
+                <form className={styles.FormContainer} onSubmit={(event) => this.sendEmail(event)}>
+                    <div className={styles.TitleContainer}>
+                        <h2 className={styles.Title}>Contact - About Me</h2>
                     </div>
-                    <div className={styles.inputGroup}>
-                        <label htmlFor="email">Email</label>
-                        <input type="email" name="email" id="email" value={this.state.form.email.value} onChange={(event) => this.inputChange(event.target.attributes.name.value, event.target.value)} />
+                    <div className={styles.Form}>
+                        <div className={styles.ErrorMessageContainer}>
+                            {this.state.errorMessage}
+                        </div>
+                        <div className={styles.InputGroup}>
+                            <label htmlFor="name">Name</label>
+                            <input type="text" name="name" id="name" value={this.state.form.name.value} onChange={(event) => this.inputChange(event.target.attributes.name.value, event.target.value)} />
+                        </div>
+                        <div className={styles.InputGroup}>
+                            <label htmlFor="email">Email</label>
+                            <input type="email" name="email" id="email" value={this.state.form.email.value} onChange={(event) => this.inputChange(event.target.attributes.name.value, event.target.value)} />
+                        </div>
+                        <div className={styles.InputGroup}>
+                            <label htmlFor="subject">Subject</label>
+                            <input type="text" name="subject" id="subject" value={this.state.form.subject.value} onChange={(event) => this.inputChange(event.target.attributes.name.value, event.target.value)} />
+                        </div>
+                        <div className={styles.InputGroup}>
+                            <label htmlFor="message">Message</label>
+                            <textarea rows="6" type="text" name="message" id="message" value={this.state.form.message.value} onChange={(event) => this.inputChange(event.target.attributes.name.value, event.target.value)} />
+                        </div>
                     </div>
-                    <div className={styles.inputGroup}>
-                        <label htmlFor="subject">Subject</label>
-                        <input type="text" name="subject" id="subject" value={this.state.form.subject.value} onChange={(event) => this.inputChange(event.target.attributes.name.value, event.target.value)} />
-                    </div>
-                    <div className={styles.inputGroup}>
-                        <label htmlFor="message">Message</label>
-                        <textarea type="text" name="message" id="message" value={this.state.form.message.value} onChange={(event) => this.inputChange(event.target.attributes.name.value, event.target.value)} />
-                    </div>
-                    {!this.state.emailSending && !this.state.emailSent ? (<div className={styles.buttonContainer}>
+                    <div className={styles.ButtonContainer}>
                         <button type="submit">Send</button>
                         <button type="button" onClick={() => this.resetValues()}>Reset</button>
-                    </div>) : (this.state.emailSending ? <LoadingSpinner /> : <p>Your email was sent successfully! I will get back to you shortly!</p>)}
+                    </div>
                 </form>
+                <NavLinks links={[{ url: "/", text: "Back to Homepage" }]} />
             </SingleElementWrapper>
-        );
+        ) : (this.state.emailSending ? <LoadingSpinner /> : (
+            <div>
+                <p>Your email was sent successfully! I will get back to you shortly!</p>
+                <p>The following buttons allow you to go back to the home page or send another message</p>
+                <Link to="/">Back to Homepage</Link>
+                <button type="button" onClick={() => this.resetValues(true)}>Send Another Message</button>
+            </div>
+        )));
         const rightContainerContent = (
             <SingleElementWrapper>
-                <img src={mainPhoto} className={styles.Portrait} alt="Portrait Alexis Bellet" />
-                <div className={styles.aboutParagraphContainer}>
+                <div className={styles.PortraitContainer}>
+                    <img src={mainPhoto} className={styles.Portrait} alt="Portrait Alexis Bellet" />
+                </div>
+                <div className={styles.AboutParagraphContainer}>
                     <h3>About me</h3>
                     <p>
                         My name is Alexis Bellet, I am a versatile web developer originally from Grenoble, France and currently living in the Toronto Area in Ontario, Canada (after leaving in Germany for 3 years). Throughout my career, I have specialized in Javascript but have history picking up new languages for specific tasks/jobs.

@@ -1,5 +1,8 @@
 var express = require('express');
 var app = express();
+var cors = require('cors');
+var port = process.env.PORT || 8080;
+require('dotenv').config();
 
 // var mongoose = require('mongoose');
 // mongoose.connect('mongodb://localhost/portfolio-alexis');
@@ -16,6 +19,8 @@ app.use('/api/projects', require('./api/projects'));
 app.use('/api/contact', require('./api/contact'));
 
 // If none of the above matches, serve public/index.html.
-app.get('*', (req, res) => res.sendFile(__dirname + '/build/index.html'))
+app.get('*', (req, res) => res.sendFile(__dirname + '/build/index.html'));
 
-app.listen(8080);
+app.listen(port, function() {
+    console.log("Server running on port: %d", port);
+});

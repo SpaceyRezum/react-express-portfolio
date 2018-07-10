@@ -1,5 +1,19 @@
-.listContainer {}
+@import '../../shared/_media-queries.scss';
+.ListContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
 
-.icon {
+.Icon {
+    padding: 0.2rem .5rem;
+    color: #ffffff;
     font-family: 'FontMfizz';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+    font-size: 2rem;
 }

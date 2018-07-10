@@ -1,5 +1,111 @@
-.Portrait {
-    width: 40%;
-    border: 6px solid #252A39;
-    border-radius: 100%;
+@import '../../shared/_media-queries.scss';
+.FormContainer {
+    width: 80%;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .TitleContainer {
+        height: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-bottom: 1rem;
+        .Title {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin: 0;
+            line-height: 1;
+            width: 100%;
+        }
+    }
+    .Form {
+        height: 70%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        .ErrorMessageContainer {
+            text-align: left;
+            width: 100%;
+            color: #fb7b7b;
+            font-weight: 300;
+            word-break: break-all;
+        }
+        .InputGroup {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 1rem 0 0;
+            label {
+                color: #ffffff;
+                font-weight: 300;
+                font-size: 1rem;
+            }
+            input,
+            textarea {
+                font-size: .9rem;
+                width: 100%;
+                margin-top: 0.5rem;
+                padding: 0.5rem;
+                resize: none;
+            }
+        }
+    }
+    .ButtonContainer {
+        height: 10%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        button {
+            padding: 0.5rem 2rem;
+            font-size: .8rem;
+            cursor: pointer;
+            border: 0;
+            background: #ffffff;
+            &:last-of-type {
+                margin-left: .5rem;
+            }
+        }
+    }
+}
+
+.PortraitContainer {
+    width: 100%;
+    height: 45vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    .Portrait {
+        width: 40%;
+        border: 6px solid #252A39;
+        border-radius: 100%;
+        margin-bottom: 1rem;
+    }
+}
+
+.AboutParagraphContainer {
+    height: 35vh;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: #252A39;
+    h3 {
+        font-size: 2rem;
+        text-decoration: underline;
+        text-align: left;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    p {
+        text-align: justify;
+        font-weight: 300;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
 }

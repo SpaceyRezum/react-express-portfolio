@@ -3,10 +3,10 @@ import CSSModules from 'react-css-modules';
 import styles from './SocialMediaIconList.css';
 
 const SocialMediaIconList = (props) => (
-    <div className={styles.listContainer}> 
-        {props.icons.map((iconObject, index) => {
-            return <a key={index} className={styles.icon} href={iconObject.url} title={iconObject.title}>{iconObject.unicode}</a>
-        })}
+    <div className={styles.LinkContainer}> 
+        { props.icons.map((iconObject, index) => {
+            return <a key={index} className={styles.Icon} href={iconObject.url} title={iconObject.title}>{iconObject.unicode}</a>
+        }) }
     </div>
 )
 

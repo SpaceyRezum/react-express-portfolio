@@ -1,5 +1,38 @@
-.Portrait {
-    width: 40%;
-    border: 6px solid #252A39;
-    border-radius: 100%;
+@import '../../shared/_media-queries.scss';
+@mixin base-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.PortraitContainer {
+    height: 40vh;
+    @include base-container;
+    .Portrait {
+        width: 35%;
+        border: 6px solid #252A39;
+        border-radius: 100%;
+    }
+}
+
+.TitleContainer {
+    height: 10vh;
+    @include base-container;
+    .Title {
+        color: #252A39;
+        font-weight: 900;
+        font-size: 1.8rem;
+    }
+}
+
+.SubtitleContainer {
+    height: 20vh;
+    @include base-container;
+    .Subtitle {
+        color: #252A39;
+        font-weight: 300;
+        font-size: 1.6rem;
+    }
 }

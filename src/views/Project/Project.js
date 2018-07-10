@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import axios from 'axios';
 import styles from './Project.css';
@@ -7,6 +8,7 @@ import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import SingleElementWrapper from '../../shared/hoc/SingleElementWrapper';
 import TechStackIconList from '../../components/TechStackIconList/TechStackIconList';
 import TechStackIconHelper from '../../components/TechStackIconList/TechStackIconHelper';
+import NavLinks from '../../components/NavLinks/NavLinks';
 
 class Project extends Component {
     constructor(props) {
@@ -26,30 +28,44 @@ class Project extends Component {
     }
 
     render() {
+        const navLinks = [{
+            url: "/",
+            text: "Back to Homepage"
+        },
+        {
+            url: "/About",
+            text: "Contact - About Me"
+        }];
         const leftContainerContent = this.state.isLoading ? <LoadingSpinner /> : (
             <SingleElementWrapper>
-                <h2 className={styles.title}>Title</h2>
-                <h3 className={styles.subtitle}>One liner description</h3>
-                <div className={styles.projectLinkContainer}>
-                    <a href="#" title="Github link for project">Source Code on Github</a>
-                    <a href="#" title="Live version link to project">View it live!</a>
+                <div className={styles.TitleContainer}>
+                    <h2 className={styles.Title}>{this.state.project.title}</h2>
                 </div>
-                <div className={styles.techStackContainer}>
-                    <h4 className={styles.techStackTitle}>Technology Stack Used</h4>
-                    <div className={styles.techStackIcons}>
-                        <TechStackIconList icons={[TechStackIconHelper.javascript]} />
-                    </div>
+                <div className={styles.SubtitleContainer}>
+                    <h3 className={styles.Subtitle}>{this.state.project.subtitle}</h3>
                 </div>
+                <div className={styles.ProjectLinkContainer}>
+                    {this.state.project.liveUrl ? <a href="#" title="Live version link to project">View it live!</a> : null}
+                    {this.state.project.githubUrl ? <a href="#" title="Github link for project">Source Code on Github</a> : null}
+
+                </div>
+                <div className={styles.TechStackContainer}>
+                    <h4 className={styles.TechStackTitle}>Technology Stack Used</h4>
+                    <TechStackIconList icons={[TechStackIconHelper.javascript]} />
+                </div>
+                <NavLinks links={navLinks} />
             </SingleElementWrapper>
         );
         const rightContainerContent = this.state.isLoading ? <LoadingSpinner revertColors /> : (
             <SingleElementWrapper>
-                <img src="http://placekitten.com/200/300" alt="placeholder" />
-                <div className={styles.descriptionContainer}>
+                <div className={styles.ImageContainer}>
+                    <img src={this.state.project.imageUrl} alt={`${this.state.project.title}'s description image`} />
+                </div>
+                <div className={styles.DescriptionContainer}>
                     <h3>Description</h3>
                     <p>
-                        This is a description paragraph
-                </p>
+                        {this.state.project.description}
+                    </p>
                 </div>
             </SingleElementWrapper>
         );

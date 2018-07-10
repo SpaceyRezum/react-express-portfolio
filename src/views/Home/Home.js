@@ -17,11 +17,11 @@ class Home extends Component {
       projects: []
     }
   }
-  
+
   componentDidMount() {
     axios.get('/api/projects').then((response) => {
       if (response.data && Array.isArray(response.data))
-        this.setState({ projects: response.data, isLoading: false});
+        this.setState({ projects: response.data, isLoading: false });
     }).catch((err) => {
       alert(err);
     });
@@ -33,12 +33,16 @@ class Home extends Component {
     );
     const rightContainerContent = (
       <SingleElementWrapper>
-        <img src={mainPhoto} className={styles.Portrait} alt="Alexis Bellet" />
-        <div className={styles.Title}>Hi, my name is Alexis Bellet!<br />I am a Web Developer, based in Toronto, Canada</div>
-        <div className={styles.Subtitle}>Check out my projects and get in touch!</div>
-        <div className={styles.LinkContainer}>
-          <SocialMediaIconList icons={[SocialMediaIconHelper.twitter, SocialMediaIconHelper.linkedin, SocialMediaIconHelper.github]}/>
+        <div className={styles.PortraitContainer}>
+          <img src={mainPhoto} className={styles.Portrait} alt="Alexis Bellet" />
         </div>
+        <div className={styles.TitleContainer}>
+          <div className={styles.Title}>Hi, my name is Alexis Bellet!<br />I am a Web Developer, based in Toronto, Canada</div>
+        </div>
+        <div className={styles.SubtitleContainer}>
+          <div className={styles.Subtitle}>Check out my projects and get in touch!</div>
+        </div>
+        <SocialMediaIconList icons={[SocialMediaIconHelper.twitter, SocialMediaIconHelper.linkedin, SocialMediaIconHelper.github]} />
       </SingleElementWrapper>
     );
     return (

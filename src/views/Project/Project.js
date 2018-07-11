@@ -24,6 +24,11 @@ class Project extends Component {
         axios.get(`/api/projects/${id}`).then(response => {
             if (response.data)
                 this.setState({ isLoading: false, project: response.data });
+        }).catch(err => {
+            alert(err.response.data);
+            this.setState({
+                isLoading: false, project: {}
+            })
         });
     }
 

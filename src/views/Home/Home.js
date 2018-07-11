@@ -23,7 +23,7 @@ class Home extends Component {
       if (response.data && Array.isArray(response.data))
         this.setState({ projects: response.data, isLoading: false });
     }).catch((err) => {
-      alert(err);
+      alert(err.response.data);
     });
   }
 

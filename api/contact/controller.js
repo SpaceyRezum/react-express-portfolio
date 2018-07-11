@@ -13,38 +13,45 @@ var smtpConfig = {
 var transporter = nodemailer.createTransport(smtpConfig);
 
 exports.sendEmail = function (req, res) {
-    var result = validateRequest(req.body.name, req.body.email, req.body.subject, req.body.message);
-    if (result.success) {
-        var emailParams = {
-            from: "info@alexis-bellet.com",
-            to: "info@alexis-bellet.com",
-            subject: "[alexis-bellet.com] New contact from " + req.body.name,
-            text: "Message from " + req.body.name + "\n" +
-                "With the email address: " + req.body.email + "\n" +
-                "And the following subject: " + req.body.subject + "\n" +
-                "Here\'s the message: " + req.body.message
-        }
-        var promise = new Promise(function (resolve, reject) {
-            transporter.sendMail(emailParams, function (error, response) {
-                if (!error)
-                    resolve();
-                else
-                    reject(error);
-            })
-        });
+    if (req.headers.referer.indexOf('alexis-bellet.com') < 0) {
+        res.status(400).send("Referer is not allowed for this call");
+        return;
+    } else {
+        var result = validateRequest(req.body.name, req.body.email, req.body.subject, req.body.message);
+        if (result.success) {
+            var emailParams = {
+                from: "info@alexis-bellet.com",
+                to: "info@alexis-bellet.com",
+                subject: "[alexis-bellet.com] New contact from " + req.body.name,
+                text: "Message from " + req.body.name + "\n" +
+                    "With the email address: " + req.body.email + "\n" +
+                    "And the following subject: " + req.body.subject + "\n" +
+                    "Here\'s the message: " + req.body.message
+            }
+            var promise = new Promise(function (resolve, reject) {
+                transporter.sendMail(emailParams, function (error, response) {
+                    if (!error)
+                        resolve();
+                    else
+                        reject(error);
+                })
+            });
 
-        promise.then(function () {
-            res.status(200).send("Message was sent successfully");
-        }).catch(function (value) {
-            res.status(400).send("Message could not be sent, please try again later");
-        });
+            promise.then(function () {
+                res.status(200);
+                res.send("Your message was sent successfully, thank you!");
+            }).catch(function (value) {
+                res.status(400);
+                res.send("Message could not be sent, please try again later.");
+            });
+        }
+        else
+            res.status(400).json(result);
     }
-    else
-        res.status(400).json(result);
 }
 
 const validateRequest = function (name, email, subject, message) {
-    var result; 
+    var result;
     var valueArray = [name, email, subject, message];
     valueArray.forEach(function (element, index) {
         if (validator.isEmpty(element)) {

@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-var cors = require('cors');
 var port = process.env.PORT || 8080;
 require('dotenv').config();
 

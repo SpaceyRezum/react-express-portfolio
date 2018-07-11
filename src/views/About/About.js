@@ -100,7 +100,7 @@ class About extends Component {
                 this.setState({ errorMessage: "", emailSending: false, emailSent: true });
                 return;
             }).catch((err) => {
-                this.setState({ errorMessage: err, emailSending: false, emailSent: false });
+                this.setState({ errorMessage: err.response.data, emailSending: false, emailSent: false });
                 return;
             })
         } else {

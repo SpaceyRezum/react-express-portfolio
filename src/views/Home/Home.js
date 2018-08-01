@@ -37,7 +37,7 @@ class Home extends Component {
           <img src={mainPhoto} className={styles.Portrait} alt="Alexis Bellet" />
         </div>
         <div className={styles.TitleContainer}>
-          <div className={styles.Title}>Hi, my name is Alexis Bellet!<br />I am a Web Developer, based in Toronto, Canada</div>
+          <div className={styles.Title}><p>Hi, my name is Alexis Bellet!</p><p>I am a Web Developer, based in Toronto, Canada</p></div>
         </div>
         <div className={styles.SubtitleContainer}>
           <div className={styles.Subtitle}>Check out my projects and get in touch!</div>

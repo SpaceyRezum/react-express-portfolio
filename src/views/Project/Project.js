@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import axios from 'axios';
 import styles from './Project.css';
@@ -41,6 +40,9 @@ class Project extends Component {
             url: "/About",
             text: "Contact - About Me"
         }];
+
+        const techStackArray = this.state.project.techStack ? this.state.project.techStack.map(name => TechStackIconHelper[name] ? TechStackIconHelper[name] : false) : [];
+
         const leftContainerContent = this.state.isLoading ? <LoadingSpinner /> : (
             <SingleElementWrapper>
                 <div className={styles.TitleContainer}>
@@ -50,13 +52,13 @@ class Project extends Component {
                     <h3 className={styles.Subtitle}>{this.state.project.subtitle}</h3>
                 </div>
                 <div className={styles.ProjectLinkContainer}>
-                    {this.state.project.liveUrl ? <a href="#" title="Live version link to project">View it live!</a> : null}
-                    {this.state.project.githubUrl ? <a href="#" title="Github link for project">Source Code on Github</a> : null}
+                    {this.state.project.liveUrl ? <a target="_blank" href={this.state.project.liveUrl} title="Live version link to project">View it live!</a> : null}
+                    {this.state.project.githubUrl ? <a target="_blank" href={this.state.project.githubUrl} title="Github link for project">Source Code on Github</a> : null}
 
                 </div>
                 <div className={styles.TechStackContainer}>
                     <h4 className={styles.TechStackTitle}>Technology Stack Used</h4>
-                    <TechStackIconList icons={[TechStackIconHelper.javascript]} />
+                    <TechStackIconList icons={techStackArray} />
                 </div>
                 <NavLinks links={navLinks} />
             </SingleElementWrapper>
@@ -64,13 +66,11 @@ class Project extends Component {
         const rightContainerContent = this.state.isLoading ? <LoadingSpinner revertColors /> : (
             <SingleElementWrapper>
                 <div className={styles.ImageContainer}>
-                    <img src={this.state.project.imageUrl} alt={`${this.state.project.title}'s description image`} />
+                    <img src={this.state.project.imageUrl} alt={`${this.state.project.title}'s description`} />
                 </div>
                 <div className={styles.DescriptionContainer}>
                     <h3>Description</h3>
-                    <p>
-                        {this.state.project.description}
-                    </p>
+                    {this.state.project.description.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
                 </div>
             </SingleElementWrapper>
         );

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import styles from './About.css';
 import mainPhoto from '../../shared/images/alexis-bellet.png';
@@ -154,11 +153,13 @@ class About extends Component {
                 <NavLinks links={[{ url: "/", text: "Back to Homepage" }]} />
             </SingleElementWrapper>
         ) : (this.state.emailSending ? <LoadingSpinner /> : (
-            <div>
+            <div className={styles.SuccessContainer}>
                 <p>Your email was sent successfully! I will get back to you shortly!</p>
-                <p>The following buttons allow you to go back to the home page or send another message</p>
-                <Link to="/">Back to Homepage</Link>
-                <button type="button" onClick={() => this.resetValues(true)}>Send Another Message</button>
+                <p>Feel free to go back to the home page or send another message.</p>
+                <div className={styles.ButtonContainer}>
+                    <button type="button" onClick={() => this.resetValues(true)}>Send Another Message</button>
+                </div>
+                <NavLinks links={[{ url: "/", text: "Back to Homepage" }]} />
             </div>
         )));
         const rightContainerContent = (

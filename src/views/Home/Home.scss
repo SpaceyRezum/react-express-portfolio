@@ -11,7 +11,8 @@
     height: 40vh;
     @include base-container;
     .Portrait {
-        width: 35%;
+        width: 15rem;
+        height: 15rem;
         border: 6px solid #252A39;
         border-radius: 100%;
     }
@@ -22,8 +23,13 @@
     @include base-container;
     .Title {
         color: #252A39;
-        font-weight: 900;
+        font-weight: 400;
         font-size: 1.8rem;
+        max-width: 90%;
+
+        p {
+            margin-bottom: .5rem;
+        }
     }
 }
 

@@ -1,8 +1,6 @@
 @import '../../shared/_media-queries.scss';
 $list-item-height: 2.8rem;
-
 .AnimatedListContainer {
-    height: 14rem;
     overflow: scroll;
     padding: 0;
     list-style: none;
@@ -16,9 +14,8 @@ $list-item-height: 2.8rem;
         align-items: center;
         a {
             &,
-            &:hover,
             &:active {
-                width: 100%;
+                position: relative;
                 height: $list-item-height;
                 display: flex;
                 justify-content: center;
@@ -26,6 +23,20 @@ $list-item-height: 2.8rem;
                 font-weight: 300;
                 color: #ffffff;
                 text-decoration: none;
+            }
+            &:before {
+                content: "";
+                width: 100%;
+                position: absolute;
+                bottom: 2px;
+                left: 0;
+                height: 2px;
+                background: #ffffff;
+                transform: scaleX(0);
+                transition: transform ease-in-out .2s;
+            }
+            &:hover:before {
+                transform: scaleX(1);
             }
         }
     }

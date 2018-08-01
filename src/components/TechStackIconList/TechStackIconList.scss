@@ -6,8 +6,14 @@
     align-content: center;
 }
 
+.IconLink {
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .Icon {
     padding: 0.2rem .5rem;
+    margin: .5rem;
     color: #ffffff;
     font-family: 'FontMfizz';
     display: flex;

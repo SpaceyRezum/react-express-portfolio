@@ -43,6 +43,10 @@ class Project extends Component {
 
         const techStackArray = this.state.project.techStack ? this.state.project.techStack.map(name => TechStackIconHelper[name] ? TechStackIconHelper[name] : false) : [];
 
+        const imageSrcSet = this.state.project && this.state.project.imageUrl ? `${this.state.project.imageUrl.replace('large', 'small')} 512w, ${this.state.project.imageUrl.replace('large', 'medium')} 768w, ${this.state.project.imageUrl} 1024w` : null;
+
+        const imageSizes = this.state.project && this.state.project.imageUrl ? `(min-width: 640px) 50vw, 100vw` : null;
+
         const leftContainerContent = this.state.isLoading ? <LoadingSpinner /> : (
             <SingleElementWrapper>
                 <div className={styles.TitleContainer}>
@@ -66,7 +70,7 @@ class Project extends Component {
         const rightContainerContent = this.state.isLoading ? <LoadingSpinner revertColors /> : (
             <SingleElementWrapper>
                 <div className={styles.ImageContainer}>
-                    <img src={this.state.project.imageUrl} alt={`${this.state.project.title}'s description`} />
+                    <img srcSet={imageSrcSet} sizes={imageSizes} src={this.state.project.imageUrl} alt={`${this.state.project.title}'s description`} />
                 </div>
                 <div className={styles.DescriptionContainer}>
                     <h3>Description</h3>

@@ -6,6 +6,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @include breakpoints("small only") {
+        height: auto;
+    }
 }
 
 .TitleContainer {
@@ -14,12 +17,21 @@
     flex-direction: column;
     justify-content: flex-end;
     padding-bottom: 1rem;
+    @include breakpoints("small only") {
+        padding: 0;
+        height: auto;
+        min-height: 4rem;
+        justify-content: center;
+    }
     .Title {
         font-size: 2.5rem;
         color: #ffffff;
         margin: 0;
         line-height: 1;
         width: 100%;
+        @include breakpoints("small only") {
+            font-size: 2rem;
+        }
     }
 }
 
@@ -29,6 +41,9 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    @include breakpoints("small only") {
+        margin-bottom: 1rem;
+    }
 }
 
 .ErrorMessageContainer {
@@ -98,12 +113,21 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    @include breakpoints("small only") {
+        height: auto;
+    }
     .Portrait {
         height: 15rem;
         width: 15rem;
         border: 6px solid #252A39;
         border-radius: 100%;
         margin-bottom: 1rem;
+        @include breakpoints("small only") {
+            margin-top: 1rem;
+            height: 14rem;
+            width: 14rem;
+            border-width: 3px;
+        }
     }
 }
 
@@ -115,6 +139,10 @@
     justify-content: flex-start;
     align-items: center;
     color: #252A39;
+    @include breakpoints("small only") {
+        height: auto;
+        width: 85%;
+    }
     h3 {
         font-size: 2rem;
         text-decoration: underline;
@@ -127,5 +155,9 @@
         font-size: 1.1rem;
         width: 100%;
         margin-bottom: 1rem;
+        @include breakpoints("small only") {
+            font-weight: 300;
+            font-size: .9rem;
+        }
     }
 }

@@ -5,6 +5,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @include breakpoints("small only") {
+        height: auto;
+    }
 }
 
 .PortraitContainer {
@@ -15,6 +18,11 @@
         height: 15rem;
         border: 6px solid #252A39;
         border-radius: 100%;
+        @include breakpoints("small only") {
+            width: 14rem;
+            height: 14rem;
+            border-width: 3px;
+        }
     }
 }
 
@@ -26,7 +34,9 @@
         font-weight: 400;
         font-size: 1.8rem;
         max-width: 90%;
-
+        @include breakpoints("small only") {
+            font-size: 150%;
+        }
         p {
             margin-bottom: .5rem;
         }
@@ -40,5 +50,8 @@
         color: #252A39;
         font-weight: 300;
         font-size: 1.6rem;
+        @include breakpoints("small only") {
+            font-size: 120%;
+        }
     }
 }

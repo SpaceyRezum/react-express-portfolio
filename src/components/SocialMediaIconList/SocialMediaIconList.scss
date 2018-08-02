@@ -7,7 +7,12 @@
     justify-content: center;
     align-items: center;
     font-size: 250%;
+    @include breakpoints("small only") {
+        height: auto;
+        padding: 1rem 0;
+    }
 }
+
 .Icon {
     font-family: 'social-media-icons';
     display: flex;

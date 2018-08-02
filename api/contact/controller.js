@@ -40,13 +40,15 @@ exports.sendEmail = function (req, res) {
             promise.then(function () {
                 res.status(200);
                 res.send("Your message was sent successfully, thank you!");
-            }).catch(function (value) {
+            }).catch(function (error) {
+                console.log(error);
                 res.status(400);
-                res.send("Message could not be sent, please try again later.");
+                res.send("Message could not be sent, please try again and contact info@alexis-bellet.com if the problem persists.");
             });
         }
-        else
+        else {
             res.status(400).json(result);
+        }
     }
 }
 

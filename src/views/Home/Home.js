@@ -46,7 +46,7 @@ class Home extends Component {
       </SingleElementWrapper>
     );
     return (
-      <Layout leftContainerContent={leftContainerContent} rightContainerContent={rightContainerContent} />
+      <Layout mobileReverseStyling={true} leftContainerContent={leftContainerContent} rightContainerContent={rightContainerContent} />
     )
   }
 }

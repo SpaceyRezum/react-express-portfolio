@@ -5,6 +5,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @include breakpoints("small only") {
+        height: auto;
+    }
 }
 
 .TitleContainer {
@@ -32,6 +35,9 @@
         font-size: 1.2rem;
         font-weight: 300;
         opacity: .5;
+        @include breakpoints("small only") {
+            font-size: 1rem;
+        }
     }
 }
 
@@ -88,7 +94,6 @@
 .DescriptionContainer {
     @include base-container;
     height: 50vh;
-    padding-top: 1rem;
     justify-content: flex-start;
     h3 {
         width: 80%;
@@ -96,6 +101,9 @@
         font-size: 1.8rem;
         color: #252A39;
         text-decoration: underline;
+        @include breakpoints("small only") {
+            font-size: 1.5rem;
+        }
     }
     p {
         font-size: 1.1rem;
@@ -104,5 +112,9 @@
         padding-top: 1rem;
         line-height: 1.2;
         letter-spacing: 1px;
+        @include breakpoints("small only") {
+            font-weight: 300;
+            font-size: .9rem;
+        }
     }
 }

@@ -117,6 +117,10 @@ class About extends Component {
         return emptyFields;
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         const leftContainerContent = (!this.state.emailSending && !this.state.emailSent ? (
             <SingleElementWrapper>

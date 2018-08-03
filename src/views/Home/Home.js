@@ -19,6 +19,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     axios.get('/api/projects').then((response) => {
       if (response.data && Array.isArray(response.data))
         this.setState({ projects: response.data, isLoading: false });

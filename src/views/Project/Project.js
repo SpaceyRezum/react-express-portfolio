@@ -19,6 +19,7 @@ class Project extends Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         const { id } = this.props.match.params;
         axios.get(`/api/projects/${id}`).then(response => {
             if (response.data)

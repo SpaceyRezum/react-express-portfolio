@@ -1,1 +1,3 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) and created by Alexis Bellet using React.js (with CSS Modules) on the front end and Express/Node.js for the back end.
+
+To use create react app dev environment alongisde with the api, run nodemon index.js before you run npm run start-dev (nodemon will be projected on localhost:8080 which is then used as proxy by the start-dev script). To change the proxy, see proxy line in package.json.
